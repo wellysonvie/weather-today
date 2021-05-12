@@ -1,0 +1,66 @@
+@import "../variables";
+
+.citySelector {
+  width: 30rem;
+  height: 100%;
+  background-color: $color-black-transparent;
+
+  display: flex;
+  flex-direction: column;
+
+  .citySelectorSearch {
+    display: flex;
+    justify-content: center;
+
+    input[type="text"] {
+      width: 100%;
+      margin-top: 1.4rem;
+      margin-left: 2rem;
+      padding: 0.8rem 0;
+      margin-right: 1rem;
+      background-color: transparent;
+      border-bottom: 1px solid $color-gray-50;
+      font-size: 1.1rem;
+      color: $color-gray-50;
+
+      &::placeholder {
+        color: $color-gray-50;
+      }
+    }
+
+    button {
+      height: 4.3rem;
+      width: 6rem;
+      background-color: $color-gray-50;
+
+      svg {
+        font-size: 1.5rem;
+        color: rgb(0, 0, 0, 0.3);
+      }
+
+      transition: all 0.2s;
+
+      &:hover svg {
+        color: rgb(0, 0, 0, 0.5);
+      }
+    }
+  }
+
+  .citySelectorSearchResult {
+    flex: 1;
+    margin: 1rem 0;
+    overflow-y: auto;
+
+    ul li {
+      padding: 1rem 2rem;
+      cursor: pointer;
+      color: $color-gray-50;
+      font-size: 1rem;
+      font-weight: 400;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+}

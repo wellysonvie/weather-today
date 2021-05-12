@@ -1,1 +1,1 @@
-# Wheather Today
+# Weather Today
