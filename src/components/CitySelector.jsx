@@ -6,7 +6,7 @@ import styles from '../styles/components/CitySelector.module.scss';
 
 const CitySelector = () => {
   const [searchResults, setSearchResults] = useState([]);
-  const { states, cities } = useContext(CityWeatherContext);
+  const { states, cities, selectCity } = useContext(CityWeatherContext);
 
   function searchCity({ target }) {
     const cityName = target.value.trim().toLowerCase();
@@ -31,7 +31,12 @@ const CitySelector = () => {
       <div className={styles.citySelectorSearchResult}>
         <ul>
           {searchResults.map(({ id, state_id, name }) => (
-            <li key={id}>{name}, {states[state_id]}</li>
+            <li
+              key={id}
+              onClick={() => selectCity(id)}
+            >
+              {name}, {states[state_id]}
+            </li>
           ))}
         </ul>
       </div>

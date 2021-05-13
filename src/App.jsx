@@ -11,7 +11,7 @@ function App() {
       <div className={styles.containerApp}>
         <div
           className={styles.background}
-          style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/backgrounds/clouds.jpg')` }}
+          style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/backgrounds/clearSky.jpg')` }}
         ></div>
         <CityWeather />
         <CitySelector />
