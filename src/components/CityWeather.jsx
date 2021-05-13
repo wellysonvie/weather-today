@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { FaSun, FaCloud, FaCloudSun, FaCloudRain, FaMoon, FaCloudMoon } from 'react-icons/fa';
 import { BiWind } from 'react-icons/bi';
 import { CityWeatherContext } from '../contexts/CityWeatherContext';
+import DateTime from './DateTime';
 
 import styles from '../styles/components/CityWeather.module.scss';
 
@@ -25,15 +26,7 @@ const CityWeather = () => {
             <span className={styles.temperature}>{cityWeather.temperature}°</span>
             <div className={styles.time}>
               <h2>{currentCity.cityName}</h2>
-              <p>
-                {new Date(cityWeather.dateTime).toLocaleString('pt-BR', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                  hour: 'numeric',
-                  minute: 'numeric'
-                })}
-              </p>
+              <DateTime />
             </div>
             <div className={styles.weatherDescription}>
               {weatherIcon[weatherStatus]}

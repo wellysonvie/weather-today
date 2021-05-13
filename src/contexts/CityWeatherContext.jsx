@@ -28,14 +28,13 @@ export function CityWeatherProvider({ children }) {
       .then(data => setCityWeather({
         temperature: data.current_condition[0].temp_C,
         description: data.current_condition[0].lang_pt[0].value,
-        windSpeed: data.current_condition[0].windspeedKmph,
-        dateTime: Date.now()
+        windSpeed: data.current_condition[0].windspeedKmph
       }));
   }, [currentCity]);
 
   useEffect(() => {
     if (cityWeather) {
-      setIsNight(new Date(cityWeather.dateTime).getHours() >= 18);
+      setIsNight(new Date().getHours() >= 18);
 
       const description = cityWeather.description.toLowerCase();
 

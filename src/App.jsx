@@ -17,8 +17,6 @@ function App() {
     'default': isNight ? 'clearSky-night.jpg' : 'clearSky-morning.jpg',
   }
 
-  console.log(backgrounds[weatherStatus]);
-
   return (
     <div className={styles.containerApp}>
       <div
