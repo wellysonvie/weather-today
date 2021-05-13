@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useRef, useState } from "react";
 
 import { states, cities } from '../brazilian-cities.json';
 
@@ -10,6 +10,7 @@ export function CityWeatherProvider({ children }) {
   const [cityWeather, setCityWeather] = useState(null);
   const [weatherStatus, setWeatherStatus] = useState('default');
   const [isNight, setIsNight] = useState(false);
+  const timeoutRef = useRef();
 
   function selectCity(cityId) {
     const city = cities.find(({ id }) => id === cityId);
@@ -21,8 +22,7 @@ export function CityWeatherProvider({ children }) {
     });
   }
 
-  useEffect(() => {
-    setCityWeather(null);
+  const updateCityWeather = useCallback(() => {
     fetch(`http://pt.wttr.in/${currentCity.cityName}?format=j1`)
       .then(response => response.json())
       .then(data => setCityWeather({
@@ -31,6 +31,19 @@ export function CityWeatherProvider({ children }) {
         windSpeed: data.current_condition[0].windspeedKmph
       }));
   }, [currentCity]);
+
+  useEffect(() => {
+    timeoutRef.current = setInterval(() => {
+      updateCityWeather()
+    }, 1000 * 60 * 20); // 20 minutes
+
+    return () => clearTimeout(timeoutRef.current);
+  }, [updateCityWeather]);
+
+  useEffect(() => {
+    setCityWeather(null);
+    updateCityWeather();
+  }, [currentCity, updateCityWeather]);
 
   useEffect(() => {
     if (cityWeather) {
