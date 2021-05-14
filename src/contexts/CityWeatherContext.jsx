@@ -6,7 +6,7 @@ export const CityWeatherContext = createContext({});
 
 export function CityWeatherProvider({ children }) {
 
-  const [currentCity, setCurrentCity] = useState({ cityName: 'Teresina' });
+  const [currentCity, setCurrentCity] = useState({ cityName: 'São Paulo' });
   const [cityWeather, setCityWeather] = useState(null);
   const [weatherStatus, setWeatherStatus] = useState('default');
   const [isNight, setIsNight] = useState(false);
@@ -45,6 +45,22 @@ export function CityWeatherProvider({ children }) {
         ]
       }));
   }, [currentCity]);
+
+  useEffect(() => {
+    function showPosition(position) {
+      fetch('https://api.bigdatacloud.net/data/reverse-geocode-client?' + new URLSearchParams({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+        localityLanguage: 'pt'
+      }))
+        .then(response => response.json())
+        .then(data => setCurrentCity({ cityName: data.city }));
+    }
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    }
+  }, []);
 
   useEffect(() => {
     timeoutRef.current = setInterval(() => {
