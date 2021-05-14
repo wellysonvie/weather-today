@@ -48,7 +48,9 @@
 
   .citySelectorSearchResult {
     flex: 1;
+    min-height: 10rem;
     margin: 1rem 0;
+    margin-right: 0.2rem;
     overflow-y: auto;
 
     ul li {

@@ -1,0 +1,34 @@
+@import "../variables";
+
+.cityForecast {
+  margin: 1rem 2rem 1.5rem 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid $color-gray-50;
+
+  h2 {
+    margin-bottom: 0.7rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .forecastDay {
+    margin-bottom: 1rem;
+
+    h3 {
+      margin-bottom: 0.4rem;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      margin-bottom: 0.2rem;
+    }
+  }
+
+  & > p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+}

@@ -28,7 +28,21 @@ export function CityWeatherProvider({ children }) {
       .then(data => setCityWeather({
         temperature: data.current_condition[0].temp_C,
         description: data.current_condition[0].lang_pt[0].value,
-        windSpeed: data.current_condition[0].windspeedKmph
+        windSpeed: data.current_condition[0].windspeedKmph,
+        forecast: [
+          {
+            date: data.weather[1].date,
+            temperature: data.weather[1].avgtempC,
+            description: data.weather[1].hourly[3].lang_pt[0].value,
+            windSpeed: data.weather[1].hourly[3].windspeedKmph
+          },
+          {
+            date: data.weather[2].date,
+            temperature: data.weather[2].avgtempC,
+            description: data.weather[2].hourly[3].lang_pt[0].value,
+            windSpeed: data.weather[2].hourly[3].windspeedKmph
+          }
+        ]
       }));
   }, [currentCity]);
 

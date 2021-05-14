@@ -48,16 +48,12 @@ button {
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 8px;
+  height: 8px;
 }
-/* ::-webkit-scrollbar-track {
-  background: $color-gray;
-  @include border_radius(10px);
-} */
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.2);
-  @include border_radius(2px);
+  @include border_radius(5px);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.3);

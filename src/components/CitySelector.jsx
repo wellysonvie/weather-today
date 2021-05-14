@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { BiSearch } from 'react-icons/bi';
+import CityForecast from './CityForecast';
 import { CityWeatherContext } from '../contexts/CityWeatherContext';
 
 import styles from '../styles/components/CitySelector.module.scss';
@@ -40,6 +41,7 @@ const CitySelector = () => {
           ))}
         </ul>
       </div>
+      <CityForecast />
     </div>
   );
 }
