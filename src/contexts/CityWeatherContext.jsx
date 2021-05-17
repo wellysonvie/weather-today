@@ -23,7 +23,7 @@ export function CityWeatherProvider({ children }) {
   }
 
   const updateCityWeather = useCallback(() => {
-    fetch(`http://pt.wttr.in/${currentCity.cityName}?format=j1`)
+    fetch(`https://pt.wttr.in/${currentCity.cityName}?format=j1`)
       .then(response => response.json())
       .then(data => setCityWeather({
         temperature: data.current_condition[0].temp_C,
