@@ -8,6 +8,7 @@ import styles from '../styles/components/CitySelector.module.scss';
 const CitySelector = () => {
   const [searchResults, setSearchResults] = useState([]);
   const { states, cities, selectCity } = useContext(CityWeatherContext);
+  const [citySelectorIsVisible, setCitySelectorIsVisible] = useState(false);
 
   function searchCity({ target }) {
     const cityName = target.value.trim().toLowerCase();
@@ -20,29 +21,45 @@ const CitySelector = () => {
   }
 
   return (
-    <div className={styles.citySelector}>
-      <div className={styles.citySelectorSearch}>
-        <input
-          type="text"
-          placeholder="Outra cidade"
-          onChange={searchCity}
-        />
-        <button><BiSearch /></button>
+    <>
+      <div
+        className={styles.btnOpen}
+        style={{ display: !citySelectorIsVisible ? 'flex' : 'none' }}
+        onClick={() => setCitySelectorIsVisible(true)}
+      >
+        <BiSearch />
       </div>
-      <div className={styles.citySelectorSearchResult}>
-        <ul>
-          {searchResults.map(({ id, state_id, name }) => (
-            <li
-              key={id}
-              onClick={() => selectCity(id)}
-            >
-              {name}, {states[state_id]}
-            </li>
-          ))}
-        </ul>
+      <div
+        className={styles.citySelector}
+        style={{ display: citySelectorIsVisible ? 'flex' : 'none' }}
+      >
+        <div className={styles.citySelectorHeader}>
+          <span onClick={() => setCitySelectorIsVisible(false)}>&times;</span>
+          <h2>Selecionar cidade</h2>
+        </div>
+        <div className={styles.citySelectorSearch}>
+          <input
+            type="text"
+            placeholder="Nome da cidade"
+            onChange={searchCity}
+            style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/assets/search.svg` }}
+          />
+        </div>
+        <div className={styles.citySelectorSearchResult}>
+          <ul>
+            {searchResults.map(({ id, state_id, name }) => (
+              <li
+                key={id}
+                onClick={() => selectCity(id)}
+              >
+                {name}, {states[state_id]}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <CityForecast />
       </div>
-      <CityForecast />
-    </div>
+    </>
   );
 }
 
