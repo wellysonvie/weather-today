@@ -2,6 +2,8 @@
 
 Web app simples para visualizar informações do clima 🌡️.
 
+Link: https://weather-today.vercel.app
+
 ## ✨ Tecnologias
 
 - HTML5/CSS3
