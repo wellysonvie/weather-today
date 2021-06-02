@@ -77,7 +77,7 @@ export function CityWeatherProvider({ children }) {
 
   useEffect(() => {
     if (cityWeather) {
-      setIsNight(new Date().getHours() >= 18);
+      setIsNight(new Date().getHours() < 6 || new Date().getHours() >= 18);
 
       const description = cityWeather.description.toLowerCase();
 
