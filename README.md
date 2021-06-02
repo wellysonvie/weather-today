@@ -4,6 +4,10 @@ Web app simples para visualizar informações do clima 🌡️.
 
 Link: https://weather-today.vercel.app
 
+<p align="center">
+  <img alt="Podcastr" src="public/screenshot.webp" width="100%">
+</p>
+
 ## ✨ Tecnologias
 
 - HTML5/CSS3
