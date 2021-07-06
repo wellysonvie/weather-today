@@ -1,0 +1,22 @@
+{
+  "name": "Weather Today",
+  "background_color": "#4e9ed9",
+  "theme_color": "#4e9ed9", 
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "/",
+  "scope": "/",
+   
+  "icons": [
+    {
+    "src": "assets/icon.png",
+    "sizes": "512x512",
+    "type": "image/png"
+    },
+    {
+    "src": "assets/icon.png",
+    "sizes": "192x192",
+    "type": "image/png"
+    }
+  ]
+}
